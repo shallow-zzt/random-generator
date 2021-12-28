@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1">
+	<title>random</title>
+	<link rel="stylesheet" href="random.css">
+	<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>	
+	<div class="index">
+	<div class="title">随机数生成姬</div>
+	<input type="text" id="num" class="input" placeholder="→请输入随机范围←">	
+	<input type="text" id="samnum" class="input" placeholder="→请输入随机个数←">
+	<button id="gen" class="button">生成</button>
+	
+	<div id="desc" class="desc">↓生成结果如下↓</div>
+	<div id="sample" class="result">
+	
+	</div>
+	<a href="https://shallow.site">浅水的blog</a>
+	</div>
+	<script>
+	$(document).ready(function(){
+      $("#gen").click(function(){
+	    $("#desc").css("display","inline");
+		$("#sample").css("display","inline");
+		$("#sample").empty();
+		var a = $("#num").val();
+		var b = Math.floor(Math.random() * a) + 1;
+		var tot = $("#samnum").val();
+		var list = [];
+			for(var i = 1;i <= a;i++){
+				list[i]= (b+i)%a+1;
+			}
+			for(i = a;i >= 1;i--){
+				if(Math.random() <= tot/i){
+					$("#sample").append("["+list[i]+"]");
+					tot--;
+				}
+			}
+		})
+	})
+	</script>
+</body>
+
+</html>
